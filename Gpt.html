@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms, Constants, and Coefficients Worksheet</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f8ff;
+      margin: 0;
+      padding: 20px;
+      color: #222;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1f4e79;
+    }
+
+    .instructions {
+      max-width: 900px;
+      margin: 10px auto 20px;
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .worksheet {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .bank, .activity {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    .bank h2, .activity h2 {
+      margin-top: 0;
+      color: #2a6f97;
+    }
+
+    .draggable-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .drag-item {
+      padding: 10px 14px;
+      background: #d9ecff;
+      border: 2px solid #7fb3ff;
+      border-radius: 10px;
+      cursor: grab;
+      font-weight: bold;
+      user-select: none;
+    }
+
+    .drag-item:active {
+      cursor: grabbing;
+    }
+
+    .question {
+      margin-bottom: 18px;
+      padding: 12px;
+      border: 2px dashed #c8d8ea;
+      border-radius: 10px;
+      background: #f9fcff;
+    }
+
+    .drop-zone {
+      display: inline-block;
+      min-width: 130px;
+      min-height: 36px;
+      padding: 8px 10px;
+      margin-left: 8px;
+      border: 2px dashed #888;
+      border-radius: 8px;
+      background: #fff;
+      vertical-align: middle;
+    }
+
+    .drop-zone.over {
+      background: #eef7ff;
+      border-color: #2a6f97;
+    }
+
+    .drop-zone.correct {
+      background: #d4f8d4;
+      border-color: #2e8b57;
+    }
+
+    .drop-zone.incorrect {
+      background: #ffd6d6;
+      border-color: #cc3333;
+    }
+
+    .controls {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    button {
+      background: #2a6f97;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      margin: 5px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1f5677;
+    }
+
+    .score {
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 15px;
+      color: #1b4332;
+    }
+
+    .example-box {
+      margin-top: 10px;
+      background: #eef7ff;
+      padding: 10px;
+      border-left: 5px solid #2a6f97;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 800px) {
+      .worksheet {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Drag-and-Drop Algebra Worksheet</h1>
+
+  <div class="instructions">
+    <p><strong>Goal:</strong> Drag the correct label into each blank.</p>
+    <p>Students will identify:</p>
+    <ul>
+      <li><strong>Term</strong> = a part of an expression separated by + or −</li>
+      <li><strong>Coefficient</strong> = the number multiplying a variable</li>
+      <li><strong>Constant</strong> = a number with no variable</li>
+    </ul>
+    <div class="example-box">
+      Example: In <strong>4x + 7</strong>, the coefficient is <strong>4</strong>, the constant is <strong>7</strong>, and <strong>4x</strong> is a term.
+    </div>
+  </div>
+
+  <div class="worksheet">
+    <div class="bank">
+      <h2>Word Bank</h2>
+      <div class="draggable-items" id="wordBank">
+        <div class="drag-item" draggable="true" data-value="term">Term</div>
+        <div class="drag-item" draggable="true" data-value="constant">Constant</div>
+        <div class="drag-item" draggable="true" data-value="coefficient">Coefficient</div>
+
+        <div class="drag-item" draggable="true" data-value="term">Term</div>
+        <div class="drag-item" draggable="true" data-value="constant">Constant</div>
+        <div class="drag-item" draggable="true" data-value="coefficient">Coefficient</div>
+
+        <div class="drag-item" draggable="true" data-value="term">Term</div>
+        <div class="drag-item" draggable="true" data-value="constant">Constant</div>
+        <div class="drag-item" draggable="true" data-value="coefficient">Coefficient</div>
+
+        <div class="drag-item" draggable="true" data-value="term">Term</div>
+        <div class="drag-item" draggable="true" data-value="constant">Constant</div>
+        <div class="drag-item" draggable="true" data-value="coefficient">Coefficient</div>
+      </div>
+    </div>
+
+    <div class="activity">
+      <h2>Questions</h2>
+
+      <div class="question">
+        1. In the expression <strong>5x + 9</strong>, the number <strong>5</strong> is the
+        <span class="drop-zone" data-answer="coefficient"></span>.
+      </div>
+
+      <div class="question">
+        2. In the expression <strong>5x + 9</strong>, the number <strong>9</strong> is the
+        <span class="drop-zone" data-answer="constant"></span>.
+      </div>
+
+      <div class="question">
+        3. In the expression <strong>7y - 3</strong>, <strong>7y</strong> is a
+        <span class="drop-zone" data-answer="term"></span>.
+      </div>
+
+      <div class="question">
+        4. In the expression <strong>12a + 4</strong>, the number <strong>12</strong> is the
+        <span class="drop-zone" data-answer="coefficient"></span>.
+      </div>
+
+      <div class="question">
+        5. In the expression <strong>12a + 4</strong>, the number <strong>4</strong> is a
+        <span class="drop-zone" data-answer="constant"></span>.
+      </div>
+
+      <div class="question">
+        6. In the expression <strong>3m + 8n - 2</strong>, <strong>8n</strong> is a
+        <span class="drop-zone" data-answer="term"></span>.
+      </div>
+
+      <div class="question">
+        7. In the expression <strong>6p - 10</strong>, the number <strong>6</strong> is the
+        <span class="drop-zone" data-answer="coefficient"></span>.
+      </div>
+
+      <div class="question">
+        8. In the expression <strong>6p - 10</strong>, the number <strong>-10</strong> is a
+        <span class="drop-zone" data-answer="constant"></span>.
+      </div>
+
+      <div class="question">
+        9. In the expression <strong>2x + 3y + 4</strong>, <strong>3y</strong> is a
+        <span class="drop-zone" data-answer="term"></span>.
+      </div>
+
+      <div class="question">
+        10. In the expression <strong>9b + 1</strong>, the number <strong>9</strong> is the
+        <span class="drop-zone" data-answer="coefficient"></span>.
+      </div>
+
+      <div class="controls">
+        <button onclick="checkAnswers()">Check Answers</button>
+        <button onclick="resetWorksheet()">Reset</button>
+      </div>
+
+      <div class="score" id="score"></div>
+    </div>
+  </div>
+
+  <script>
+    let draggedItem = null;
+
+    const dragItems = document.querySelectorAll('.drag-item');
+    const dropZones = document.querySelectorAll('.drop-zone');
+    const wordBank = document.getElementById('wordBank');
+
+    dragItems.forEach(item => {
+      item.addEventListener('dragstart', () => {
+        draggedItem = item;
+        setTimeout(() => item.style.opacity = '0.5', 0);
+      });
+
+      item.addEventListener('dragend', () => {
+        setTimeout(() => {
+          draggedItem.style.opacity = '1';
+          draggedItem = null;
+        }, 0);
+      });
+    });
+
+    dropZones.forEach(zone => {
+      zone.addEventListener('dragover', e => {
+        e.preventDefault();
+        zone.classList.add('over');
+      });
+
+      zone.addEventListener('dragleave', () => {
+        zone.classList.remove('over');
+      });
+
+      zone.addEventListener('drop', e => {
+        e.preventDefault();
+        zone.classList.remove('over');
+
+        if (draggedItem) {
+          if (zone.firstChild) {
+            wordBank.appendChild(zone.firstChild);
+          }
+          zone.textContent = '';
+          zone.appendChild(draggedItem);
+        }
+      });
+    });
+
+    wordBank.addEventListener('dragover', e => {
+      e.preventDefault();
+    });
+
+    wordBank.addEventListener('drop', e => {
+      e.preventDefault();
+      if (draggedItem) {
+        wordBank.appendChild(draggedItem);
+      }
+    });
+
+    function checkAnswers() {
+      let correct = 0;
+
+      dropZones.forEach(zone => {
+        zone.classList.remove('correct', 'incorrect');
+
+        const item = zone.querySelector('.drag-item');
+        if (item) {
+          const studentAnswer = item.dataset.value;
+          const correctAnswer = zone.dataset.answer;
+
+          if (studentAnswer === correctAnswer) {
+            zone.classList.add('correct');
+            correct++;
+          } else {
+            zone.classList.add('incorrect');
+          }
+        } else {
+          zone.classList.add('incorrect');
+        }
+      });
+
+      document.getElementById('score').textContent =
+        `Score: ${correct} / ${dropZones.length}`;
+    }
+
+    function resetWorksheet() {
+      dropZones.forEach(zone => {
+        zone.classList.remove('correct', 'incorrect');
+        const item = zone.querySelector('.drag-item');
+        if (item) {
+          wordBank.appendChild(item);
+        }
+        zone.textContent = '';
+      });
+
+      document.getElementById('score').textContent = '';
+    }
+  </script>
+</body>
+</html>
